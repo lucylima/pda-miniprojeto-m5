@@ -1,55 +1,5 @@
 import { Artist } from "../model/Artist.model.js";
 import { v4 as uuidv4 } from "uuid";
-const artists = [
-  {
-    id: uuidv4(),
-    artist: "7038634357",
-  },
-  {
-    id: uuidv4(),
-    artist: "lucy eris",
-  },
-  {
-    id: uuidv4(),
-    artist: "Caroline Polachek",
-  },
-  {
-    id: uuidv4(),
-    artist: "Mitski",
-  },
-  {
-    id: uuidv4(),
-    artist: "Malibu",
-  },
-  {
-    id: uuidv4(),
-    artist: "Ecco2k",
-  },
-  {
-    id: uuidv4(),
-    artist: "Bladee",
-  },
-  {
-    id: uuidv4(),
-    artist: "Chico Buarque",
-  },
-  {
-    id: uuidv4(),
-    artist: "Yeule",
-  },
-  {
-    id: uuidv4(),
-    artist: "Lady Gaga",
-  },
-  {
-    id: uuidv4(),
-    artist: "Melanie Martinez",
-  },
-  {
-    id: uuidv4(),
-    artist: "Amaarae",
-  },
-];
 
 const randomArtist = () => {
   const random = Math.floor(Math.random() * artists.length)
