@@ -3,10 +3,7 @@ import { randomSong, showSomeSongs, createSong, deleteSong } from '../controller
 
 const songRouter = Router()
 
-songRouter.get("/songs", (req, res) => {
-  const response = randomSong()
-  res.json({ response })
-})
+songRouter.get("/song", randomSong)
 
 songRouter.get("/songs/:number", (req,res) => {
   const { number } = req.params

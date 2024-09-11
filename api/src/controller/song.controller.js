@@ -1,16 +1,21 @@
-import { Song } from "../model/Song.model.js"
-import { v4 as uuidv4 } from 'uuid'
+import { database } from "../database/database.js";
+import { Song } from "../model/Song.model.js";
+import { v4 as uuidv4 } from "uuid";
 
-const randomSong = () => {
-  const random = Math.floor(Math.random() * song.length)
-  const response = song[random];
-  return response;
+const randomSong = async (req, res) => {
+  const random = Math.floor(Math.random() * (await database.song.count({})));
+  const response = await database.song.findUnique({
+    where: {
+      id: random,
+    },
+  });
+  return res.status(200).json({ response, random });
 };
 
 const showSomeSongs = (number) => {
   let list = [];
   for (let index = 0; index < number; index++) {
-    const random = Math.floor(Math.random() * song.length)
+    const random = Math.floor(Math.random() * song.length);
     list.push(song[random]);
   }
   const response = list;
@@ -24,10 +29,10 @@ const createSong = (title, artist, album, genre) => {
 };
 
 const deleteSong = (id) => {
-  let songIndex = song.findIndex(song => song.id == id);
-  const deletedSong = song.find(song => song.id == id)
+  let songIndex = song.findIndex((song) => song.id == id);
+  const deletedSong = song.find((song) => song.id == id);
   song.splice(songIndex, 1);
-  return deletedSong
+  return deletedSong;
 };
 
 export { randomSong, showSomeSongs, createSong, deleteSong };
