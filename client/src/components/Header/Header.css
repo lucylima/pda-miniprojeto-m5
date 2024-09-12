@@ -1,0 +1,35 @@
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 1.5rem;
+}
+
+.header-logo {
+    color: pink;
+}
+
+.header-nav {
+    justify-self: center;
+}
+
+.header-nav-ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-nav-ul-li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: gray;
+}
+
+.header-nav-ul-li:hover {
+}
