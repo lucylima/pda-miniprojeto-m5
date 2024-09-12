@@ -8,31 +8,7 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Album {
-  id           Int      @id @default(autoincrement())
-  name         String
-  release_date DateTime
-  genres       String
-  tracks       Int
-  songs        Song[]
-  Artist       Artist?  @relation(fields: [artistId], references: [id])
-  artistId     Int?
-}
-
 model Artist {
   id     Int     @id @default(autoincrement())
   name   String
-  genres String
-  albums Album[]
-  songs  Song[]
-}
-
-model Song {
-  id       Int     @id @default(autoincrement())
-  title    String
-  genres   String
-  Artist   Artist? @relation(fields: [artistId], references: [id])
-  artistId Int?
-  Album    Album?  @relation(fields: [albumId], references: [id])
-  albumId  Int?
 }
