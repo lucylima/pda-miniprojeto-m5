@@ -8,16 +8,8 @@ const lastFmAxios = axios.create({
     `?method=artist.gettoptracks` +
     `&api_key=${process.env.last_fm}` +
     `&format=json` +
-    `&limit=1`
+    `&limit=20`
 })
-
-const makeTrackRequest = async (artist) => {
-  const response = await lastFmAxios(`&artist=${artist}`)
-  const { toptracks: {
-    track
-  }} = response.data
-  return track
-}
 
 const randomNumber = async () => {
   try {
@@ -27,6 +19,15 @@ const randomNumber = async () => {
   } catch (error) {
     return error
   }
+}
+
+const makeTrackRequest = async (artist) => {
+  const response = await lastFmAxios(`&artist=${artist}`)
+  const random = Math.floor(Math.random() * (20 - 0) + 0)
+  const {
+    toptracks: { track }
+  } = response.data
+  return track[random]
 }
 
 const randomSong = async (req, res) => {
