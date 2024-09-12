@@ -3,9 +3,6 @@ import { randomArtist } from '../controller/artist.controller.js'
 
 const artistRouter = Router()
 
-artistRouter.get('/artist', (req, res) => {
-  const response = randomArtist()
-  res.json({ response })
-})
+artistRouter.get('/artist', randomArtist)
 
 export { artistRouter }
