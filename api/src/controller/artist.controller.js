@@ -1,11 +1,10 @@
-import { Artist } from "../model/Artist.model.js";
-
-const randomArtist = () => {
-  const random = Math.floor(Math.random() * artists.length)
-
-  const response = artists[random];
-  return response;
+const randomArtist = (req, res) => {
+  try {
+    
+  } catch (error) {
+    return res.status(400).json({ erro })
+  }
 };
 
 
-export { randomArtist, showSomeArtists, createArtist, deleteArtist };
+export { randomArtist };

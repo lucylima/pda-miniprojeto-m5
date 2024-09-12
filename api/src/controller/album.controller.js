@@ -1,9 +1,9 @@
-import { Album } from "../model/Album.model.js"
-
-const randomAlbum = () => {
-  const random = Math.floor(Math.random() * albums.length)
-  const response = albums[random]
-  return response
+const randomAlbum = (req, res) => {
+  try {
+    
+  } catch (error) {
+    return res.status(400).json({error})    
+  }
 }
 
 export { randomAlbum }
