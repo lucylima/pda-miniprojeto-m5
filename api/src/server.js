@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import 'dotenv/config'
 import { songRouter } from './routes/song.routes.js'
 import { artistRouter } from './routes/artist.routes.js'
 import { albumRouter } from './routes/album.routes.js'
@@ -15,5 +16,5 @@ app.use(artistRouter)
 app.use(albumRouter)
 
 app.listen(port, () => {
-  console.log(`rodando com sucesso na porta ${port}`)
+  console.log(`running on => ${port}`)
 })
