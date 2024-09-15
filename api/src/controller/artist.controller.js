@@ -7,7 +7,7 @@ const artistAxios = axios.create({
   baseURL: `https://ws.audioscrobbler.com/2.0`
 })
 
-const makeTrackRequest = async (artist) => {
+const artistRequest = async (artist) => {
   const response = await artistAxios(
     `?method=artist.getinfo` +
       `&api_key=${process.env.last_fm}` +
@@ -23,7 +23,7 @@ const randomArtist = async (req, res) => {
         id: await randomNumber()
       }
     })
-    const response = await makeTrackRequest(artist.name)
+    const response = await artistRequest(artist.name)
     return res.status(200).json(response)
   } catch (error) {
     return res.status(400).json(error)
