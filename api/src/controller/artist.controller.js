@@ -1,24 +1,35 @@
 import { database } from '../database/database.js'
+import { randomNumber } from '../utils/randomNumber.js'
+import axios from 'axios'
 
-const randomArtist = (req, res) => {
-  try {
-  } catch (error) {
-    return res.status(400).json({ erro })
-  }
+const artistAxios = axios.create({
+  baseURL:
+    `https://ws.audioscrobbler.com/2.0/` +
+    `?method=artist.getinfo` +
+    `&api_key=${process.env.last_fm}` +
+    `&format=json`
+})
+
+const requestArtist = async (artist) => {
+  const response = await artistAxios(`&artist=${artist}`)
+  const {
+    artist: { name, url, image }
+  } = response.data
+  return artist
 }
 
-const newArtist = async (req, res) => {
+const randomArtist = async (req, res) => {
   try {
-    const { artist } = req.body
-    const response = await database.artist.create({
-      data: {
-        name: artist
+    const artist = await database.artist.findUnique({
+      where: {
+        id: await randomNumber()
       }
     })
-    return res.status(201).json({ response })
+    const response = await requestArtist(artist.name)
+    return res.status(200).json(response)
   } catch (error) {
     return res.status(400).json({ error })
   }
 }
 
-export { randomArtist, newArtist }
+export { randomArtist }
