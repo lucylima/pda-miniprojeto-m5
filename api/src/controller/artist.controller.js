@@ -1,21 +1,19 @@
 import { database } from '../database/database.js'
 import { randomNumber } from '../utils/randomNumber.js'
 import axios from 'axios'
+import 'dotenv/config'
 
 const artistAxios = axios.create({
-  baseURL:
-    `https://ws.audioscrobbler.com/2.0/` +
-    `?method=artist.getinfo` +
-    `&api_key=${process.env.last_fm}` +
-    `&format=json`
+  baseURL: `https://ws.audioscrobbler.com/2.0`
 })
 
-const requestArtist = async (artist) => {
-  const response = await artistAxios(`&artist=${artist}`)
-  const {
-    artist: { name, url, image }
-  } = response.data
-  return artist
+const makeTrackRequest = async (artist) => {
+  const response = await artistAxios(
+    `?method=artist.getinfo` +
+      `&api_key=${process.env.last_fm}` +
+      `&format=json&artist=${artist}`
+  )
+  return response.data
 }
 
 const randomArtist = async (req, res) => {
@@ -25,10 +23,10 @@ const randomArtist = async (req, res) => {
         id: await randomNumber()
       }
     })
-    const response = await requestArtist(artist.name)
+    const response = await makeTrackRequest(artist.name)
     return res.status(200).json(response)
   } catch (error) {
-    return res.status(400).json({ error })
+    return res.status(400).json(error)
   }
 }
 
