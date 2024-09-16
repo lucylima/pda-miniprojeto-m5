@@ -53,6 +53,7 @@ npm run dev
 ## Exemplos de resposta:
 
 ### /artist
+
 ```json
 {
   "artist": {
@@ -78,4 +79,5 @@ npm run dev
       "listeners": "3386",
       "playcount": "115443"
     }
+  }
 ```
