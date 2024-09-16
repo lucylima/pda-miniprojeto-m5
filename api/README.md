@@ -12,6 +12,8 @@
 ## Sobre
 
 A Random music é uma API desenvolvida como parte do miniprojeto do módulo 5 do Programadores do Amanhã. Tem a proposta de selecionar artistas, álbuns e músicas aleatórias com base nos artistas cadastrados no banco de dados. A api busca artistas na base de dados do site LastFM.
+### https://pda-miniprojeto-m5.onrender.com
+
 
 ## Como executar o projeto
 
