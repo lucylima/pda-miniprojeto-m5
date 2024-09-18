@@ -1,27 +1,26 @@
 import "boxicons";
-import './Header.css'
+import "./Header.css";
+import { useState } from "react";
+import { HeaderOption } from "../HeaderOption/HeaderOption.jsx";
 function Header() {
-  const handleClick = () => {
-    
+  const [txt, setTxt] = useState("RMUS");
+  function getName(e) {
+    setTxt(e.target.innerText);
   }
-
   return (
     <header className="header">
-      <h2 className="header-logo">RMUS</h2>
+      <h2 className="header-logo">{txt}</h2>
       <nav className="header-nav">
         <ul className="header-nav-ul">
-          <li className="header-nav-ul-li" onClick={handleClick}>
-            <box-icon name="music" type="solid"></box-icon>
+          <HeaderOption icon="music" handleClick={getName}>
             Song
-          </li>
-          <li className="header-nav-ul-li" onClick={handleClick}>
-            <box-icon name="user" type="solid"></box-icon>
+          </HeaderOption>
+          <HeaderOption icon="user" handleClick={getName}>
             Artist
-          </li>
-          <li className="header-nav-ul-li" onClick={handleClick}>
-            <box-icon name="album" type="solid"></box-icon>
+          </HeaderOption>
+          <HeaderOption icon="album" handleClick={getName}>
             Album
-          </li>
+          </HeaderOption>
         </ul>
       </nav>
     </header>
