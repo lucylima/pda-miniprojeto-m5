@@ -17,7 +17,6 @@ function Song() {
 
   return (
     <>
-      <Header />
       <SongCard
         song={song}
       />
