@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { SongCard } from "../../components/SongCard/SongCard.jsx";
-import { Header } from "../../components/Header/Header.jsx";
 
 
 function Song() {
